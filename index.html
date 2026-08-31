@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ana Julia Ferreira Rodrigues — Desenvolvedora de Software</title>
+  <meta name="description" content="Portfólio de Ana Julia Ferreira Rodrigues, desenvolvedora de software com experiência em desenvolvimento web, mobile, backend e IoT." />
+  <meta name="author" content="Ana Julia Ferreira Rodrigues" />
+
+  <!-- Open Graph (placeholders para compartilhamento) -->
+  <meta property="og:title" content="Ana Julia Ferreira Rodrigues — Desenvolvedora de Software" />
+  <meta property="og:description" content="Desenvolvimento Web • Mobile • Backend • IoT" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon placeholder — substitua por assets/images/favicon.ico -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&%2338;lt;/&%2338;gt;</text></svg>" />
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind (Play CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#FAF8F5',
+            surface: '#FFFFFF',
+            ink: '#211D29',
+            'ink-soft': '#635A6E',
+            'ink-faint': '#948C9C',
+            lilac: {
+              50: '#F3F1F9',
+              100: '#E7E2F2',
+              300: '#B8ABDA',
+              500: '#8B7BB8',
+              700: '#6C5A93',
+              900: '#463A63',
+            },
+            rose: {
+              100: '#F3E3E7',
+              300: '#E3B9C4',
+              500: '#CC8FA0',
+            },
+            line: '#E7E1E6',
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          boxShadow: {
+            card: '0 1px 2px rgba(33, 29, 41, 0.04), 0 8px 24px -12px rgba(33, 29, 41, 0.12)',
+            'card-hover': '0 4px 8px rgba(33, 29, 41, 0.06), 0 16px 32px -12px rgba(33, 29, 41, 0.16)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
+
+    body { background-color: #FAF8F5; }
+
+    /* Foco visível para navegação por teclado */
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 2px solid #6C5A93;
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Navbar link ativo */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 0%;
+      height: 1.5px;
+      background: #6C5A93;
+      transition: width 0.25s ease;
+    }
+    .nav-link.is-active::after,
+    .nav-link:hover::after { width: 100%; }
+
+    /* Cursor piscante do editor de código no Hero */
+    .type-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: #8B7BB8;
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Scrollbar discreta */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #FAF8F5; }
+    ::-webkit-scrollbar-thumb { background: #D8D1DC; border-radius: 8px; }
+
+    /* Grade pontilhada sutil de fundo (referência a interfaces técnicas) */
+    .dot-grid {
+      background-image: radial-gradient(#DCD5E4 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    .skill-tag { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="font-body text-ink antialiased">
+
+  <!-- Skip link para acessibilidade -->
+  <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-ink focus:text-paper focus:px-4 focus:py-2 focus:rounded">
+    Pular para o conteúdo
+  </a>
+
+  <!-- ============ NAVBAR ============ -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 bg-paper/80 backdrop-blur-md border-b border-transparent">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-8 py-4" aria-label="Navegação principal">
+      <a href="#topo" class="font-display font-semibold text-lg tracking-tight text-ink">
+        Ana Júlia<span class="text-lilac-500">.</span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8 text-sm text-ink-soft font-medium">
+        <li><a href="#sobre" class="nav-link hover:text-ink transition-colors">Sobre</a></li>
+        <li><a href="#tecnologias" class="nav-link hover:text-ink transition-colors">Tecnologias</a></li>
+        <li><a href="#projetos" class="nav-link hover:text-ink transition-colors">Projetos</a></li>
+        <li><a href="#experiencia" class="nav-link hover:text-ink transition-colors">Experiência</a></li>
+        <li><a href="#formacao" class="nav-link hover:text-ink transition-colors">Formação</a></li>
+        <li>
+          <a href="#contato" class="nav-link inline-flex items-center rounded-md bg-ink text-paper px-4 py-2 hover:bg-lilac-700 transition-colors">
+            Contato
+          </a>
+        </li>
+      </ul>
+
+      <button id="menu-toggle" type="button" class="md:hidden p-2 text-ink" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+        </svg>
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="md:hidden hidden border-t border-line bg-paper">
+      <ul class="flex flex-col px-6 py-4 gap-1 text-ink-soft font-medium">
+        <li><a href="#sobre" class="mobile-link block py-2.5">Sobre</a></li>
+        <li><a href="#tecnologias" class="mobile-link block py-2.5">Tecnologias</a></li>
+        <li><a href="#projetos" class="mobile-link block py-2.5">Projetos</a></li>
+        <li><a href="#experiencia" class="mobile-link block py-2.5">Experiência</a></li>
+        <li><a href="#formacao" class="mobile-link block py-2.5">Formação</a></li>
+        <li><a href="#contato" class="mobile-link block py-2.5 text-ink font-semibold">Contato</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ============ HERO ============ -->
+    <section id="topo" class="relative overflow-hidden dot-grid">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-36 pb-24 md:pt-44 md:pb-32 grid md:grid-cols-2 gap-14 items-center">
+
+        <div class="reveal">
+          <p class="skill-tag text-xs text-lilac-700 mb-5 tracking-wide">&lt;ana-julia.dev/&gt;</p>
+
+          <h1 class="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl leading-[1.08] text-ink">
+            Ana Júlia Ferreira<br class="hidden sm:block" /> Rodrigues
+          </h1>
+
+          <p class="mt-4 text-xl sm:text-2xl text-ink-soft font-display font-medium">
+            Desenvolvedora de Software
+          </p>
+
+          <p class="mt-5 skill-tag text-sm sm:text-base text-lilac-700">
+            Desenvolvimento Web • Mobile • Backend • IoT<span class="type-cursor" aria-hidden="true"></span>
+          </p>
+
+          <p class="mt-6 text-base text-ink-soft max-w-md leading-relaxed">
+            Estudante de Desenvolvimento de Software Multiplataforma, com formação técnica em Desenvolvimento de Sistemas pela ETEC e experiência prática em projetos web, mobile, backend e IoT.
+          </p>
+
+          <div class="mt-9 flex flex-wrap items-center gap-3">
+            <a href="#projetos" class="rounded-md bg-ink text-paper px-5 py-3 text-sm font-medium hover:bg-lilac-700 transition-colors">
+              Ver projetos
+            </a>
+            <a href="https://github.com/AnaJuliaRrf" target="_blank" rel="noopener noreferrer" class="rounded-md border border-line px-5 py-3 text-sm font-medium text-ink hover:border-lilac-500 hover:text-lilac-700 transition-colors">
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/anajuliaferreirarodrigues/" target="_blank" rel="noopener noreferrer" class="rounded-md border border-line px-5 py-3 text-sm font-medium text-ink hover:border-lilac-500 hover:text-lilac-700 transition-colors">
+              LinkedIn
+            </a>
+          </div>
+        </div>
+
+        <!-- Signature element: "editor de código" ilustrativo -->
+        <div class="reveal" style="transition-delay: 120ms;">
+          <div class="rounded-xl border border-line bg-surface shadow-card overflow-hidden max-w-md mx-auto">
+            <div class="flex items-center gap-3 border-b border-line bg-paper px-4 py-3">
+              <img
+                src="assets/images/anajulia.png"
+                alt="Ana Júlia Ferreira Rodrigues"
+                class="h-12 w-12 rounded-full object-cover border border-line bg-lilac-50"
+                loading="lazy"
+                onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%27120%27 height=%27120%27><rect width=%27100%25%27 height=%27100%25%27 fill=%27%23F3F1F9%27/><circle cx=%2750%25%27 cy=%2740%25%27 r=%2715%25%27 fill=%27%236C5A93%27/><rect x=%2718%25%27 y=%2757%25%27 width=%2764%25%27 height=%2728%25%27 rx=%2714%25%27 fill=%27%236C5A93%27 opacity=%270.8%27/><text x=%2750%25%27 y=%2750%25%27 font-family=%27Arial%27 font-size=%2724%27 text-anchor=%27middle%27 fill=%27white%27>A</text></svg>'"
+              />
+              <div class="min-w-0">
+                <p class="skill-tag text-[10px] uppercase tracking-[0.18em] text-ink-faint">Perfil</p>
+                <p class="font-display text-sm font-semibold text-ink truncate">Ana Júlia Ferreira Rodrigues</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5 px-4 py-3 border-b border-line bg-paper">
+              <span class="h-2.5 w-2.5 rounded-full bg-rose-300"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-lilac-300"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-lilac-100"></span>
+              <span class="skill-tag ml-3 text-xs text-ink-faint">perfil.js</span>
+            </div>
+            <pre class="skill-tag text-[13px] leading-relaxed p-5 overflow-x-auto text-ink-soft"><code><span class="text-lilac-700">const</span> <span class="text-ink">desenvolvedora</span> = {
+  <span class="text-rose-500">nome</span>: <span class="text-lilac-700">"Ana Julia"</span>,
+  <span class="text-rose-500">foco</span>: [<span class="text-lilac-700">"Web"</span>, <span class="text-lilac-700">"Mobile"</span>, <span class="text-lilac-700">"Backend"</span>, <span class="text-lilac-700">"IoT"</span>],
+  <span class="text-rose-500">formacao</span>: <span class="text-lilac-700">"DSM + Técnico ETEC"</span>,
+  <span class="text-rose-500">buscando</span>: [<span class="text-lilac-700">"Estágio"</span>, <span class="text-lilac-700">"Dev Júnior"</span>]
+};</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOBRE ============ -->
+    <section id="sobre" class="max-w-6xl mx-auto px-5 sm:px-8 py-20 md:py-28 scroll-mt-20">
+      <div class="grid md:grid-cols-[220px_1fr] gap-10 md:gap-16">
+        <div class="reveal">
+          <p class="skill-tag text-xs text-lilac-700 tracking-wide">&lt;sobre/&gt;</p>
+          <h2 class="font-display font-semibold text-2xl sm:text-3xl mt-2 text-ink">Sobre mim</h2>
+        </div>
+
+        <div class="reveal space-y-5 text-ink-soft leading-relaxed max-w-2xl">
+          <p>
+            Sou estudante de Desenvolvimento de Software Multiplataforma e tenho formação técnica em Desenvolvimento de Sistemas pela ETEC. Ao longo da minha trajetória, venho construindo experiência prática com desenvolvimento web, mobile, backend, APIs REST, bancos de dados e IoT.
+          </p>
+          <p>
+            Participei de duas Iniciações Científicas Júnior, uma voltada para Inteligência Artificial aplicada à IoT e outra para Elicitação de Requisitos, o que me deu contato direto com pesquisa aplicada e com o processo de levantamento e análise de requisitos de software.
+          </p>
+          <p>
+            Atualmente, estou em busca de oportunidades de <span class="text-ink font-medium">estágio</span> e <span class="text-ink font-medium">desenvolvedora júnior</span>, com interesse em desenvolvimento backend e full stack.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TECNOLOGIAS ============ -->
+    <section id="tecnologias" class="bg-surface border-y border-line scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 py-20 md:py-28">
+        <div class="reveal max-w-2xl">
+          <p class="skill-tag text-xs text-lilac-700 tracking-wide">&lt;tecnologias/&gt;</p>
+          <h2 class="font-display font-semibold text-2xl sm:text-3xl mt-2 text-ink">Tecnologias e conhecimentos</h2>
+          <p class="mt-3 text-ink-soft leading-relaxed">
+            Organizadas por área, com indicação do nível de contato que já tive com cada uma.
+          </p>
+        </div>
+
+        <!-- Legenda -->
+        <div class="reveal mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-ink-soft">
+          <span class="inline-flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full bg-lilac-500"></span>Experiência prática</span>
+          <span class="inline-flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full bg-rose-300"></span>Experiência em projeto</span>
+          <span class="inline-flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-full border border-ink-faint"></span>Conhecimento acadêmico</span>
+        </div>
+
+        <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- Frontend -->
+          <div class="reveal rounded-lg border border-line p-6">
+            <h3 class="font-display font-semibold text-ink mb-4">Frontend</h3>
+            <ul class="flex flex-wrap gap-2">
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">HTML</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">CSS</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">JavaScript</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-rose-100 text-ink border border-rose-300/60">React Native</li>
+            </ul>
+          </div>
+
+          <!-- Backend -->
+          <div class="reveal rounded-lg border border-line p-6">
+            <h3 class="font-display font-semibold text-ink mb-4">Backend</h3>
+            <ul class="flex flex-wrap gap-2">
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">Node.js</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">Express.js</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">APIs REST</li>
+            </ul>
+          </div>
+
+          <!-- Banco de dados -->
+          <div class="reveal rounded-lg border border-line p-6">
+            <h3 class="font-display font-semibold text-ink mb-4">Banco de Dados</h3>
+            <ul class="flex flex-wrap gap-2">
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">MySQL</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-white text-ink-soft border border-dashed border-ink-faint">MongoDB</li>
+            </ul>
+          </div>
+
+          <!-- Mobile -->
+          <div class="reveal rounded-lg border border-line p-6">
+            <h3 class="font-display font-semibold text-ink mb-4">Mobile</h3>
+            <ul class="flex flex-wrap gap-2">
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-rose-100 text-ink border border-rose-300/60">React Native</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-white text-ink-soft border border-dashed border-ink-faint">Expo</li>
+            </ul>
+          </div>
+
+          <!-- IoT -->
+          <div class="reveal rounded-lg border border-line p-6">
+            <h3 class="font-display font-semibold text-ink mb-4">IoT</h3>
+            <ul class="flex flex-wrap gap-2">
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">ESP32</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">Sensores</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-rose-100 text-ink border border-rose-300/60">Comunicação I2C</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-rose-100 text-ink border border-rose-300/60">Integração IoT + API + BD</li>
+            </ul>
+          </div>
+
+          <!-- Ferramentas e conceitos -->
+          <div class="reveal rounded-lg border border-line p-6">
+            <h3 class="font-display font-semibold text-ink mb-4">Ferramentas e Conceitos</h3>
+            <ul class="flex flex-wrap gap-2">
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">Git</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">GitHub</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-rose-100 text-ink border border-rose-300/60">Azure</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-rose-100 text-ink border border-rose-300/60">Socket.IO</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-rose-100 text-ink border border-rose-300/60">Google Apps Script</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-rose-100 text-ink border border-rose-300/60">Engenharia de Requisitos</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-white text-ink-soft border border-dashed border-ink-faint">Swagger</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-white text-ink-soft border border-dashed border-ink-faint">TDD</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-white text-ink-soft border border-dashed border-ink-faint">Testes A/B</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-white text-ink-soft border border-dashed border-ink-faint">CI/CD</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-white text-ink-soft border border-dashed border-ink-faint">UML</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-white text-ink-soft border border-dashed border-ink-faint">BPMN</li>
+              <li class="skill-tag text-xs px-3 py-1.5 rounded-full bg-white text-ink-soft border border-dashed border-ink-faint">Metodologias Ágeis</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJETOS ============ -->
+    <section id="projetos" class="max-w-6xl mx-auto px-5 sm:px-8 py-20 md:py-28 scroll-mt-20">
+      <div class="reveal max-w-2xl">
+        <p class="skill-tag text-xs text-lilac-700 tracking-wide">&lt;projetos/&gt;</p>
+        <h2 class="font-display font-semibold text-2xl sm:text-3xl mt-2 text-ink">Projetos</h2>
+        <p class="mt-3 text-ink-soft leading-relaxed">
+          Uma seleção dos projetos em que apliquei os conhecimentos acima, do backend ao hardware.
+        </p>
+      </div>
+
+      <!-- Projeto em destaque: NeoVínculo -->
+      <article class="reveal mt-12 rounded-2xl border border-line bg-surface shadow-card overflow-hidden">
+        <div class="grid lg:grid-cols-2">
+          <div class="bg-lilac-50 flex items-center justify-center p-8 min-h-[260px]">
+            <img
+              src="assets/images/NeoVinculo.png"
+              alt="Placeholder — screenshot do sistema NeoVínculo (substituir por imagem real)"
+              class="max-h-64 w-auto rounded-lg border border-lilac-100 bg-white object-contain"
+              loading="lazy"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27260%27><rect width=%27100%25%27 height=%27100%25%27 fill=%27%23F3F1F9%27/><text x=%2750%25%27 y=%2750%25%27 font-family=%27monospace%27 font-size=%2714%27 fill=%27%236C5A93%27 text-anchor=%27middle%27>PROJECT_IMAGE_NEO_VINCULO</text></svg>'"
+            />
+          </div>
+
+          <div class="p-8 md:p-10">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="skill-tag text-[11px] uppercase tracking-wide text-lilac-700 bg-lilac-50 px-2.5 py-1 rounded">Destaque</span>
+              <span class="skill-tag text-[11px] uppercase tracking-wide text-ink-soft">IoT · Web · Mobile</span>
+            </div>
+
+            <h3 class="font-display font-semibold text-xl sm:text-2xl text-ink">NeoVínculo</h3>
+            <p class="mt-1 text-sm text-ink-soft">Monitoramento infantil com IoT</p>
+
+            <dl class="mt-5 space-y-4 text-sm">
+              <div>
+                <dt class="font-medium text-ink">Problema</dt>
+                <dd class="text-ink-soft mt-1 leading-relaxed">Acompanhar indicadores como temperatura corporal e oxigenação de crianças exige a integração confiável entre sensores físicos e um sistema de software que centralize e disponibilize esses dados.</dd>
+              </div>
+              <div>
+                <dt class="font-medium text-ink">Solução</dt>
+                <dd class="text-ink-soft mt-1 leading-relaxed">Um ESP32-C3 conectado aos sensores DS18B20 e MAX30102 coleta os dados e os envia para uma API. Um backend processa e armazena as informações, e um aplicativo mobile permite o acompanhamento em tempo real.</dd>
+              </div>
+              <div>
+                <dt class="font-medium text-ink">Funcionalidades principais</dt>
+                <dd class="text-ink-soft mt-1 leading-relaxed">Coleta contínua de dados via sensores, comunicação em tempo real com Socket.IO, API REST para integração entre hardware e sistema, aplicativo mobile para acompanhamento e armazenamento em banco MySQL.</dd>
+              </div>
+              <div>
+                <dt class="font-medium text-ink">Meu papel</dt>
+                <dd class="text-ink-soft mt-1 leading-relaxed">No projeto NeoVínculo, atuei como desenvolvedora responsável pela arquitetura do ecossistema de software de ponta a ponta, liderando a criação do backend RESTful, modelagem e persistência em banco NoSQL orientado a séries temporais, integração do firmware IoT aos servidores em nuvem e consumo de dados em tempo real nas aplicações Web e Mobile.</dd>
+              </div>
+            </dl>
+
+            <ul class="flex flex-wrap gap-2 mt-6">
+              <li class="skill-tag text-[11px] px-2.5 py-1 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">ESP32-C3</li>
+              <li class="skill-tag text-[11px] px-2.5 py-1 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">DS18B20</li>
+              <li class="skill-tag text-[11px] px-2.5 py-1 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">MAX30102</li>
+              <li class="skill-tag text-[11px] px-2.5 py-1 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">Node.js</li>
+              <li class="skill-tag text-[11px] px-2.5 py-1 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">Express</li>
+              <li class="skill-tag text-[11px] px-2.5 py-1 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">MySQL</li>
+              <li class="skill-tag text-[11px] px-2.5 py-1 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">React Native</li>
+              <li class="skill-tag text-[11px] px-2.5 py-1 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">Socket.IO</li>
+              <li class="skill-tag text-[11px] px-2.5 py-1 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">API REST</li>
+              <li class="skill-tag text-[11px] px-2.5 py-1 rounded-full bg-lilac-50 text-lilac-900 border border-lilac-100">Azure</li>
+            </ul>
+
+            <!-- Arquitetura simplificada -->
+            <div class="mt-7">
+              <p class="text-xs font-medium text-ink-soft mb-3">Fluxo simplificado</p>
+              <div class="flex flex-wrap items-center gap-2 skill-tag text-[11px] text-ink-soft">
+                <span class="px-3 py-2 rounded-md border border-line bg-paper">Sensores (DS18B20 / MAX30102)</span>
+                <span aria-hidden="true">→</span>
+                <span class="px-3 py-2 rounded-md border border-line bg-paper">ESP32-C3</span>
+                <span aria-hidden="true">→</span>
+                <span class="px-3 py-2 rounded-md border border-line bg-paper">API REST + Socket.IO</span>
+                <span aria-hidden="true">→</span>
+                <span class="px-3 py-2 rounded-md border border-line bg-paper">MySQL</span>
+                <span aria-hidden="true">→</span>
+                <span class="px-3 py-2 rounded-md border border-line bg-paper">App mobile (React Native)</span>
+              </div>
+            </div>
+
+            <a href="https://github.com/FatecFranca/DSM-P4-G02-2026-01" target="_blank" rel="noopener noreferrer"
+               class="mt-8 inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-lilac-700 transition-colors">
+              Ver repositório no GitHub
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Grid dos demais projetos -->
+      <div class="mt-8 grid md:grid-cols-2 gap-6">
+
+        <!-- Pede Mais -->
+        <article class="reveal rounded-xl border border-line bg-surface shadow-card hover:shadow-card-hover transition-shadow p-6 flex flex-col">
+          <span class="skill-tag text-[11px] uppercase tracking-wide text-ink-soft">Projeto acadêmico</span>
+          <h3 class="font-display font-semibold text-lg text-ink mt-1">Pede Mais</h3>
+          <p class="mt-2 text-sm text-ink-soft leading-relaxed flex-1">O Pé de Mais é uma plataforma web desenvolvida para otimizar o fluxo de atendimento, recebimento de pedidos e gestão de estoque de estabelecimentos comerciais. Inspirado no modelo de esteiras de atendimento dinâmicas (como o Anota AI), o sistema centraliza os pedidos em tempo real, permitindo aos operadores acompanhar status (novo, em preparo, pronto, despachado), atualizar disponibilidade de itens no cardápio/estoque e reduzir o tempo de espera no atendimento ao cliente. — projeto acadêmico de desenvolvimento de software.</p>
+
+          <details class="mt-4 text-sm">
+            <summary class="cursor-pointer font-medium text-ink hover:text-lilac-700">Ver detalhes</summary>
+            <dl class="mt-3 space-y-3 text-ink-soft">
+              <div><dt class="font-medium text-ink">Tecnologias</dt><dd class="mt-1">JavaScript • HTML5 • CSS3</dd></div>
+              <div><dt class="font-medium text-ink">Funcionalidades</dt><dd class="mt-1">Esteira Dinâmica de Pedidos: Acompanhamento visual dos estados do pedido (Novo, Em Preparo, Pronto, Entregue/Finalizado).
+
+Gestão de Itens e Cardápio: Interface para visualização, adição e alteração rápida de itens disponíveis.
+
+Interface Responsiva e Acessível: Layout estruturado para rápida leitura visual e controle ágil de ações na rotina operacional.</dd></div>
+              <div><dt class="font-medium text-ink">Meu papel</dt><dd class="mt-1">Meu papel foi realizar a construção dos componentes visuais e telas interativas do sistema, priorizando usabilidade (UI/UX), clareza visual para o operador de caixa/cozinha e agilidade nas mudanças de status dos pedidos.</dd></div>
+            </dl>
+          </details>
+
+          <a href="https://github.com/AnaJuliaRrf/Pede-Mais" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-lilac-700 transition-colors">
+            Ver repositório
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </a>
+        </article>
+
+        <!-- Sistema de Ocorrências -->
+        <article class="reveal rounded-xl border border-line bg-surface shadow-card hover:shadow-card-hover transition-shadow p-6 flex flex-col">
+          <span class="skill-tag text-[11px] uppercase tracking-wide text-ink-soft">Automação</span>
+          <h3 class="font-display font-semibold text-lg text-ink mt-1">Sistema de Ocorrências</h3>
+          <p class="mt-2 text-sm text-ink-soft leading-relaxed flex-1">Sistema que automatiza o registro de ocorrências e o envio de informações aos responsáveis, integrando ferramentas do Google.</p>
+
+          <details class="mt-4 text-sm">
+            <summary class="cursor-pointer font-medium text-ink hover:text-lilac-700">Ver detalhes</summary>
+            <dl class="mt-3 space-y-3 text-ink-soft">
+              <div>
+                <dt class="font-medium text-ink">Integração</dt>
+                <dd class="mt-1 flex flex-wrap gap-1.5">
+                  <span class="skill-tag text-[11px] px-2 py-0.5 rounded-full bg-lilac-50 border border-lilac-100">Google Forms</span>
+                  <span class="skill-tag text-[11px] px-2 py-0.5 rounded-full bg-lilac-50 border border-lilac-100">Google Sheets</span>
+                  <span class="skill-tag text-[11px] px-2 py-0.5 rounded-full bg-lilac-50 border border-lilac-100">Google Docs</span>
+                  <span class="skill-tag text-[11px] px-2 py-0.5 rounded-full bg-lilac-50 border border-lilac-100">Google Drive</span>
+                  <span class="skill-tag text-[11px] px-2 py-0.5 rounded-full bg-lilac-50 border border-lilac-100">Apps Script</span>
+                </dd>
+              </div>
+              <div>
+                <dt class="font-medium text-ink">Como funciona</dt>
+                <dd class="mt-1">Formulário registra a ocorrência → Apps Script processa e organiza os dados na planilha → documento é gerado automaticamente → informações são encaminhadas aos responsáveis.</dd>
+              </div>
+              <div><dt class="font-medium text-ink">Meu papel</dt><dd class="mt-1">Responsável pelo desenvolvimento e implantação: Ana Júlia Ferreira Rodrigues — Estagiária PROATI.
+                Atuação no levantamento da necessidade da escola, planejamento da solução, criação e configuração do Google Forms, estruturação da planilha de registros, desenvolvimento do modelo digital da ficha de ocorrência, 
+                programação das automações utilizando Google Apps Script, configuração do envio automático de e-mails aos responsáveis pelo acompanhamento das ocorrências, geração e armazenamento das fichas em PDF e realização de testes e ajustes do sistema.</dd></div>
+            </dl>
+          </details>
+
+          <a href="https://github.com/AnaJuliaRrf/sistema-ocorrencias-escolares.git" target="_blank" rel="noopener noreferrer" class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-ink hover:text-lilac-700 transition-colors">
+            Ver material do projeto
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ EXPERIÊNCIA ============ -->
+    <section id="experiencia" class="bg-surface border-y border-line scroll-mt-20">
+
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 py-20 md:py-28">
+        <div class="grid md:grid-cols-[220px_1fr] gap-10 md:gap-16">
+          <div class="reveal">
+            <p class="skill-tag text-xs text-lilac-700 tracking-wide">&lt;experiencia/&gt;</p>
+            <h2 class="font-display font-semibold text-2xl sm:text-3xl mt-2 text-ink">Experiência</h2>
+          </div>
+
+          <div class="reveal max-w-2xl space-y-6">
+            <div class="rounded-xl border border-line p-6 sm:p-8">
+              <div class="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 class="font-display font-semibold text-lg text-ink">Atendimento ao Cliente / SAC — Magazine Luiza</h3>
+                <span class="skill-tag text-xs text-ink-faint">2024 - 2026</span>
+              </div>
+              <p class="text-sm text-ink-soft mt-1">Atendimento ao Cliente / SAC — Magazine Luiza</p>
+
+              <p class="mt-4 text-ink-soft leading-relaxed">
+                 Atuação focada no suporte multicanal e resolução de demandas de pós-venda, garantindo uma experiência ágil e humanizada ao consumidor final. Responsável por mediar soluções entre clientes e áreas operacionais/logísticas, tratando ocorrências de entrega, trocas e dúvidas sobre produtos e serviços.
+              </p>
+
+              <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-ink-soft">
+                <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-lilac-500 shrink-0"></span>Comunicação assertiva</li>
+                <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-lilac-500 shrink-0"></span>Resolução de problemas</li>
+                <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-lilac-500 shrink-0"></span>Suporte técnico a usuários</li>
+                <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-lilac-500 shrink-0"></span>Gestão de tempo e processos</li>
+              </ul>
+            </div>
+
+            <div class="rounded-xl border border-line p-6 sm:p-8">
+              <div class="flex flex-wrap items-baseline justify-between gap-2">
+                <h3 class="font-display font-semibold text-lg text-ink">SEDUC-SP / PROATI — Estagiária de TI / Suporte e Tecnologia</h3>
+                <span class="skill-tag text-xs text-ink-faint">2026 - 2027</span>
+              </div>
+              <p class="text-sm text-ink-soft mt-1">SEDUC-SP / PROATI — Ambiente educacional</p>
+
+              <p class="mt-4 text-ink-soft leading-relaxed">
+                Atuação com suporte tecnológico em ambiente educacional, unindo conhecimentos técnicos a um bom relacionamento com professores e usuários.
+              </p>
+
+              <ul class="mt-5 grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-ink-soft">
+                <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-lilac-500 shrink-0"></span>Configuração e manutenção de computadores</li>
+                <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-lilac-500 shrink-0"></span>Instalação e configuração de softwares</li>
+                <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-lilac-500 shrink-0"></span>Suporte técnico a usuários</li>
+                <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-lilac-500 shrink-0"></span>Preparação de equipamentos</li>
+                <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-lilac-500 shrink-0"></span>Apoio a professores e usuários</li>
+                <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-lilac-500 shrink-0"></span>Suporte a recursos tecnológicos educacionais</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FORMAÇÃO ============ -->
+    <section id="formacao" class="max-w-6xl mx-auto px-5 sm:px-8 py-20 md:py-28 scroll-mt-20">
+      <div class="grid md:grid-cols-[220px_1fr] gap-10 md:gap-16">
+        <div class="reveal">
+          <p class="skill-tag text-xs text-lilac-700 tracking-wide">&lt;formacao/&gt;</p>
+          <h2 class="font-display font-semibold text-2xl sm:text-3xl mt-2 text-ink">Formação</h2>
+        </div>
+
+        <div class="reveal max-w-2xl space-y-5">
+          <div class="rounded-xl border border-line p-6">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="font-medium text-ink">Desenvolvimento de Software Multiplataforma</h3>
+              <span class="skill-tag text-xs text-ink-faint">2024 - 2027</span>
+            </div>
+            <p class="text-sm text-ink-soft mt-1">Centro Universitário Municipal de Franca (Uni-FACEF)</p>
+          </div>
+
+          <div class="rounded-xl border border-line p-6">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="font-medium text-ink">Técnico em Desenvolvimento de Sistemas</h3>
+              <span class="skill-tag text-xs text-ink-faint">2021 - 2023</span>
+            </div>
+            <p class="text-sm text-ink-soft mt-1">ETEC</p>
+          </div>
+
+          <div class="rounded-xl border border-line p-6">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="font-medium text-ink">Iniciação Científica Júnior — IA aplicada à IoT</h3>
+              <span class="skill-tag text-xs text-ink-faint">2022 - 2023</span>
+            </div>
+            <p class="text-sm text-ink-soft mt-1">Pesquisa aplicada</p>
+          </div>
+
+          <div class="rounded-xl border border-line p-6">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="font-medium text-ink">Iniciação Científica Júnior — Elicitação de Requisitos</h3>
+              <span class="skill-tag text-xs text-ink-faint">2023 - 2024</span>
+            </div>
+            <p class="text-sm text-ink-soft mt-1">Pesquisa aplicada</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTATO ============ -->
+    <section id="contato" class="bg-ink text-paper scroll-mt-20">
+      <div class="max-w-6xl mx-auto px-5 sm:px-8 py-20 md:py-28 text-center">
+        <p class="reveal skill-tag text-xs text-lilac-300 tracking-wide">&lt;contato/&gt;</p>
+        <h2 class="reveal font-display font-semibold text-3xl sm:text-4xl mt-3">Vamos conversar</h2>
+        <p class="reveal mt-4 text-paper/70 max-w-lg mx-auto leading-relaxed">
+          Aberta a oportunidades de estágio e desenvolvimento júnior. Envie uma mensagem ou me encontre nas redes abaixo.
+        </p>
+
+        <div class="reveal mt-9 flex flex-wrap justify-center gap-3">
+          <a href="mailto:ana.jf.rodrigues.pessoal@gmail.com" class="rounded-md bg-paper text-ink px-5 py-3 text-sm font-medium hover:bg-lilac-100 transition-colors">
+            EMAIL
+          </a>
+          <a href="https://github.com/AnaJuliaRrf" target="_blank" rel="noopener noreferrer" class="rounded-md border border-paper/25 px-5 py-3 text-sm font-medium hover:border-paper/60 transition-colors">
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/anajuliaferreirarodrigues/" target="_blank" rel="noopener noreferrer" class="rounded-md border border-paper/25 px-5 py-3 text-sm font-medium hover:border-paper/60 transition-colors">
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-ink text-paper/60 border-t border-paper/10">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+      <p class="skill-tag">© <span id="year"></span> Ana Julia Ferreira Rodrigues</p>
+      <p class="skill-tag">Construído com HTML, Tailwind CSS &amp; JavaScript</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
